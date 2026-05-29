@@ -13,4 +13,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/replicas
-        value: 2 # dev 환경은 포드 2대만 구동
+        value: 4 # dev 환경은 포드 2대만 구동
