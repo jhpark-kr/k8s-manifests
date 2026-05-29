@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/<내_계정>/<레포지토리_이름>.git' # 본인 Git 주소
+    repoURL: 'https://github.com/jhpark-kr/k8s-manifests.git' # 본인 Git 주소
     targetRevision: HEAD
     path: root-apps # ◀ 중요: 개별 앱 선언서들이 모여있는 폴더를 통째로 바라봅니다.
   destination:
