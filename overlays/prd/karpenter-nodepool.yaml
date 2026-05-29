@@ -1,0 +1,16 @@
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: prd-nodepool
+spec:
+  template:
+    spec:
+      requirements:
+        - key: karpenter.sh/capacity-type
+          operator: In
+          values: ["on-demand"] # 안정성을 위해 온디맨드 강제
+        - key: karpenter.k8s.aws/instance-category
+          operator: In
+          values: ["m", "c"] # 운영계는 고성능 M, C 계열 인스턴스 사용
+      nodeClassRef:
+        name: default-ec2nodeclass

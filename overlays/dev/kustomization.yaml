@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - karpenter-nodepool.yaml
+namePrefix: dev- # 리소스 이름 앞에 dev- 가 붙음
+commonLabels:
+  environment: development
+patches:
+  - target:
+      kind: Deployment
+      name: spring-boot-app
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2 # dev 환경은 포드 2대만 구동

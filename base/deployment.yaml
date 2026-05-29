@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-app
+  template:
+    metadata:
+      labels:
+        app: spring-boot-app
+    spec:
+      containers:
+      - name: spring-app
+        image: ghcr.io/samueleresca/spring-boot-sample:latest # 공인 샘플 이미지
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: "500m" # Karpenter 스케일링 유도를 위해 리소스를 살짝 크게 할당
+            memory: "512Mi"
